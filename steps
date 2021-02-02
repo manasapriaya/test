@@ -1,0 +1,13 @@
+ ssh-add -K ~/.ssh/rsatoken
+  246  git clone git@github.com:manasapriyaberi/test.git\n
+  247  cd ..
+  248  cd workspace/testproect1
+  249  ls
+  250  git push -u origin main
+  251  git  status
+  252  git add abcd
+  253  git commit "added abcd file"
+  254  git commit -m  "added abcd file"
+  255  git status
+  256  git push
+  257  git pull origin master

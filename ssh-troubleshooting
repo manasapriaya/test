@@ -1,0 +1,21 @@
+ssh-add
+Could not open a connection to your authentication agent.
+ 
+ 
+ eval `ssh-agent -s`
+   87  ssh-add ~/.ssh/id_rsa
+   88  ssh-add ~/.ssh/manasa
+   
+   
+   In the following, user is your username.
+
+mkdir -p /home/user/.ssh
+ssh-keygen -t rsa
+touch /home/user/.ssh/authorized_keys
+touch /home/user/.ssh/known_hosts
+chown -R user:user /home/user/.ssh
+chmod 700 /home/user/.ssh
+chmod 600 /home/user/.ssh/id*
+chmod 644 /home/user/.ssh/id*.pub
+chmod 644 /home/user/.ssh/authorized_keys
+chmod 644 /home/user/.ssh/known_hosts

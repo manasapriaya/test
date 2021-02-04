@@ -1,0 +1,47 @@
+Oracle JDK 11 installed, following our guidelines on installing specific versions of OpenJDK on Ubuntu 20.04.
+Step 1 — Installing Jenkins
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install jenkins
+Step 2 — Starting Jenkins
+sudo systemctl status jenkins
+If everything went well, the beginning of the status output shows that the service is active and configured to start at boot:
+
+Output
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Fri 2020-06-05 21:21:46 UTC; 45s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 1137)
+   CGroup: /system.slice/jenkins.service
+   If everything went well, the beginning of the status output shows that the service is active and configured to start at b
+   Step 3 — Opening the Firewall
+   sudo ufw allow 8080
+Note: If the firewall is inactive, the following commands will allow OpenSSH and enable the firewall:
+
+sudo ufw allow OpenSSH
+sudo ufw enablesudo ufw status
+You’ll notice that traffic is allowed to port 8080 from anywhere:
+
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+8080                       ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+8080 (v6)                  ALLOW       Anywhere (v6)
+Step 4 — Setting Up Jenkins
+To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://your_server_ip_or_domain:8080
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Copy the 32-character alphanumeric password from the terminal and paste it into the Administrator password field, then click Continue.
+
+We’ll click the Install suggested plugins option, which will immediately begin the installation process.
+Enter the name and password for your user:
+You’ll receive an Instance Configuration page that will ask you to confirm the preferred URL for your Jenkins instance. Confirm either the domain name for your server or your server’s IP address:
+
+After confirming the appropriate information, click Save and Finish. You’ll receive a confirmation page confirming that “Jenkins is Ready!”:
+

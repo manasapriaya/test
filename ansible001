@@ -1,0 +1,25 @@
+login ubuntu
+install ansible
+apt update
+apt install ansible
+beter to switch user from to another inorder to reduce the permissions
+:useradd -m -s /bin/bash ansible
+su - ansible
+check whoami 
+create key pair for remote machines to use
+ssh-keygen
+goto .ssh floder
+can see key pair both public anb private
+copy public key by cat command
+goto server ,can import the key under keypairs copy the public key and make use of remote machines
+by using key login remote machines
+ansible uses modules to do actions perform on remote machines
+create host file and save ip adress of remote servers(rs)
+create the anisible.cfg file or copy from /etc/ansible/ansible.cfg .
+mkdir .ansible
+copy the hosts and ansible.cfg files into .ansible floder
+and then edit the ansible.cfg file set correct path
+run ansible following command to install apche on remote severs
+ansible 172.31.47.170(ip adress) -u ubuntu(user) --become-user root(set to root) --become-method=sudo -b(become) -m(module) apt -a "name=apache2 update_cache=yes state=latest"
+we cang group the ip adress in [] hosts file
+playbook can be used to run remote servers what we do
